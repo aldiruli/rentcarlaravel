@@ -1,0 +1,248 @@
+/* CSS Kustom */
+.icon {
+    width: 140px; 
+    height: 140px;
+    vertical-align: middle;
+    margin-right: 0px;
+}
+body {
+    background-color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+.navbar {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: -1;
+    transition: background-color 0.9s;
+}
+.navbar.hover,
+.navbar.scroll {
+    background-color: #333;
+}
+.navbar .nav-link {
+    color: #999;
+    transition: color 0.9s;
+    cursor: pointer;
+}
+.navbar.scroll .nav-link {
+    color: #fff;
+}
+.navbar-brand {
+    font-size: 24px;
+    transition: color 0.3s;
+}
+.navbar.scroll .navbar-brand {
+    color: #1c2331;
+}
+.navbar.scroll .navbar-nav .nav-link:hover {
+    background-color: #ffc107; 
+    color: #333; 
+}
+.navbar .nav-link.active {
+    background-color: #ffc107; 
+    color: #333; 
+}
+.jumbotron{
+    background-color: #fff;
+}
+.jumbotron .jumbotron-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 40%;
+    background-image: url('../img/template/toyota-alphard-rental-mobil-sby.png');
+    background-size: cover;
+    z-index: 0;
+}
+
+.jumbotron .jumbotron-content {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+    width: 50%;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+.img-attrib {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 .5em .5em 0;
+    padding: .25em;
+    color: white;
+    background-color: rgba(0,0,0,.2)
+}
+.read_bt a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffc107;
+    color: #333; 
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer;
+}
+.read_bt a:hover {
+    transform: scale(1.05);
+    background-color: #ffc107;
+}
+.btn-primary {
+    background-color: #333;
+    border: none;
+}
+.btn-primary.active,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: #ffc107;
+    color: #333;
+    box-shadow: none;
+}
+.btn-primary:hover {
+    background-color: #ffc107;
+}
+.card {
+    border: none;
+}
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+/* about */
+#about {
+    background-color: #333;
+    padding: 60px 0;
+    z-index: 0;
+    color: #fff;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.about-zatrans{
+    animation-delay: 2s;
+    animation-fill-mode: none, forwards; 
+}
+h2, h5{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+#cars{
+    background-color: #fff;
+    padding: 60px 0;
+}
+/* Our Service */
+#services {
+    background-color: #f5f5f5;
+    padding: 60px 0;
+}
+.service-card {
+    text-align: center;
+    padding: 30px;
+    background-color: #333;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.service-card i {
+    font-size: 48px;
+    color: #ffc107;
+    margin-bottom: 20px;
+}
+.service-card h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.service-card p {
+    font-size: 16px;
+}
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);    
+}
+#contact {
+    background-color: #333;   
+    color: #ffffff;
+    padding: 40px 0;
+}
+.contact-map {
+    height: 425px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 0;
+}
+/* CSS untuk Form */
+#contactForm {
+    background-color: #ffc107;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+#contactForm{
+    color: #333;
+}
+#contactForm .form-group {
+    margin-bottom: 20px;
+}
+#contactForm label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#contactForm textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+}
+#contactForm button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#contactForm button:hover {
+    background-color: #ffc107;
+    color: #333;
+}
+/* Optional: Style for form success message */
+#contactForm .success-message {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Optional: Style for form error message */
+#contactForm .error-message {
+    color: #dc3545;
+    font-weight: bold;
+}
+.footer {
+    background-color: #333;
+    color: #f0f0f0;
+    text-align: center;
+    padding: 20px 0;
+}
+/* Custom animation duration */
+.animate__slow {
+    animation-duration: 2.5s; /* Adjust the duration as needed */
+}
