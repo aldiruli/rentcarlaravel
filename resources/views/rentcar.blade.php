@@ -95,7 +95,7 @@
             </div>
         </div>
         <br>
-        <div class="row">
+        {{-- <div class="row">
             <!-- cars card -->
             <div class="col-md-4 mb-4 minibus">
                 <div class="card text-center">
@@ -184,6 +184,30 @@
                 
             </div>
             <!-- Add another car card here -->
+        </div> --}}
+        <div class="row">
+            @forelse ($cars as $car)
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center">
+                        <img src="{{ $car->image ? asset('storage/' . $car->image) : 'assets/img/default-image.png' }}" 
+                             class="card-img-top" 
+                             alt="{{ $car->title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $car->title }}</h5>
+                            <p class="card-text">{{ $car->description }}</p>
+                            <a href="https://wa.me/1234567890" class="btn btn-primary">
+                                <i class="fab fa-whatsapp"></i> Rent Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="col-12">
+                    <div class="alert alert-warning text-center">
+                        No cars available at the moment.
+                    </div>
+                </div>
+            @endforelse
         </div>
     </div>
 </div>

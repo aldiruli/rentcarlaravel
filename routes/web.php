@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [HomeController::class, 'rentcar']);
+Route::get('/rentcar', [CarController::class, 'rentcar'])->name('rentcar');
 
 Route::get('/login', function () {
     return view('auth/login');
@@ -38,13 +40,23 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::prefix('/home')->name('home.')->group(function () {
-        Route::get('/', [HomeController::class, 'index'])->name('index'); // Menampilkan daftar konten
-        Route::get('create', [HomeController::class, 'create'])->name('create'); // Menampilkan form tambah konten
-        Route::post('store', [HomeController::class, 'store'])->name('store'); // Menyimpan konten baru
-        Route::get('{home}/edit', [HomeController::class, 'edit'])->name('edit'); // Menampilkan form edit
-        Route::put('{home}', [HomeController::class, 'update'])->name('update'); // Menyimpan perubahan
-        Route::delete('{home}', [HomeController::class, 'destroy'])->name('destroy'); // Menghapus konten
+        Route::get('/', [HomeController::class, 'index'])->name('index'); 
+        Route::get('create', [HomeController::class, 'create'])->name('create'); 
+        Route::post('store', [HomeController::class, 'store'])->name('store'); 
+        Route::get('{home}/edit', [HomeController::class, 'edit'])->name('edit');
+        Route::put('{home}', [HomeController::class, 'update'])->name('update'); 
+        Route::delete('{home}', [HomeController::class, 'destroy'])->name('destroy'); 
     });
+    Route::prefix('cars')->name('cars.')->group(function () {
+        Route::get('/', [CarController::class, 'index'])->name('index'); // List semua mobil
+        Route::get('/create', [CarController::class, 'create'])->name('create'); // Form tambah mobil
+        Route::post('/store', [CarController::class, 'store'])->name('store'); // Proses tambah mobil
+        Route::get('/{car}/edit', [CarController::class, 'edit'])->name('edit'); // Form edit mobil
+        Route::put('/{car}', [CarController::class, 'update'])->name('update'); // Proses edit mobil
+        Route::delete('/{car}', [CarController::class, 'destroy'])->name('destroy'); // Hapus mobil
+    });
+    
+    
     
     
     
