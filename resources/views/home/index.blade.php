@@ -5,6 +5,11 @@
 @section('content')
 <div class="container mt-4">
     <h1>Home Content</h1>
+    @if ($homes->count() < 1)
+        <div class="mb-3">
+            <a href="{{ route('home.create') }}" class="btn btn-primary">Add New Content</a>
+        </div>
+    @endif
     {{-- <div class="mb-3">
         <a href="{{ route('home.create') }}" class="btn btn-primary">Add New Content</a>
     </div> --}}
