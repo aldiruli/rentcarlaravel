@@ -287,7 +287,7 @@
                         <b>Jalan Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla distinctio corrupti animi et voluptates aliquam in tempore dolorum! Earum totam possimus, ullam similique saepe error veritatis vero iusto nihil sequi?</b>
                     </li>
                     <li>
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-phone"></i>
                         <b>+031 xxxxxx xxxxx</b>
                     </li>
                     <li>
@@ -295,7 +295,7 @@
                         <b>test@mail.com</b>
                     </li>
                     <li>
-                        <i class="fas fa-whatsapp"></i>
+                        <i class="fab fa-whatsapp"></i>
                         <b>+62 xxx xxx xxxx</b>
                     </li>
                 </ul>
