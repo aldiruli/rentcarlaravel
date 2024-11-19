@@ -52,7 +52,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 0;
+    bottom: 20%;
     left: 40%;
     background-image: url('../img/template/toyota-alphard-rental-mobil-sby.png');
     background-size: cover;
@@ -245,4 +245,8 @@ h2, h5{
 /* Custom animation duration */
 .animate__slow {
     animation-duration: 2.5s; /* Adjust the duration as needed */
+}
+
+ul {
+    list-style-type: none;
 }

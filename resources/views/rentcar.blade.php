@@ -262,7 +262,7 @@
         <h2 class="text-center mb-4">Contact</h2>
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <form id="contactForm">
+                {{-- <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" required>
@@ -276,7 +276,29 @@
                         <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message <i class="fa fa-paper-plane"></i> </button>
-                </form>
+                </form> --}}
+                
+                <ul>
+                    <li>
+                        <h3>Your Logo Here</h3>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <b>Jalan Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla distinctio corrupti animi et voluptates aliquam in tempore dolorum! Earum totam possimus, ullam similique saepe error veritatis vero iusto nihil sequi?</b>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <b>+031 xxxxxx xxxxx</b>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <b>test@mail.com</b>
+                    </li>
+                    <li>
+                        <i class="fas fa-whatsapp"></i>
+                        <b>+62 xxx xxx xxxx</b>
+                    </li>
+                </ul>
             </div>
             <div class="col-md-6">
                 <div class="contact-map">

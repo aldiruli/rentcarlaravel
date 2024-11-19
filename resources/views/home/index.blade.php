@@ -5,9 +5,9 @@
 @section('content')
 <div class="container mt-4">
     <h1>Home Content</h1>
-    <div class="mb-3">
+    {{-- <div class="mb-3">
         <a href="{{ route('home.create') }}" class="btn btn-primary">Add New Content</a>
-    </div>
+    </div> --}}
     <table class="table table-bordered">
         <thead>
             <tr>
