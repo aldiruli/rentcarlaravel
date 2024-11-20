@@ -27,6 +27,21 @@
             <label for="image">Image</label>
             <input type="file" name="image" id="image" class="form-control">
         </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" id="status" name="status">
+                <option value="available">Available</option>
+                <option value="rented">Rented</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="borrowed_at">Tanggal Pinjam</label>
+            <input type="date" class="form-control" id="borrowed_at" name="borrowed_at">
+        </div>
+        <div class="form-group">
+            <label for="returned_at">Tanggal Kembali</label>
+            <input type="date" class="form-control" id="returned_at" name="returned_at">
+        </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>

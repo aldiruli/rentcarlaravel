@@ -31,6 +31,23 @@
                 <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->title }}" width="100">
             @endif
         </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" id="status" name="status">
+                <option value="available" {{ old('status', $car->status) == 'available' ? 'selected' : '' }}>Available</option>
+                <option value="rented" {{ old('status', $car->status) == 'rented' ? 'selected' : '' }}>Rented</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="borrowed_at">Tanggal Pinjam</label>
+            <input type="date" class="form-control" id="borrowed_at" name="borrowed_at" 
+            value="{{ old('borrowed_at', $car->borrowed_at) }}">
+        </div>
+        <div class="form-group">
+            <label for="returned_at">Tanggal Kembali</label>
+            <input type="date" class="form-control" id="returned_at" name="returned_at" 
+             value="{{ old('returned_at', $car->returned_at) }}">
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>

@@ -14,5 +14,8 @@ class Car extends Model
         'description',
         'category',
         'image',
+        'status',        
+        'borrowed_at',   
+        'returned_at',
     ];
 }

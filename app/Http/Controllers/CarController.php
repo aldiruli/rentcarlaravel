@@ -32,6 +32,9 @@ class CarController extends Controller
             'description' => 'required',
             'category' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|string', 
+            'borrowed_at' => 'nullable|date', 
+            'returned_at' => 'nullable|date',
         ]);
 
         if ($request->hasFile('image')) {
@@ -54,7 +57,20 @@ class CarController extends Controller
             'description' => 'required',
             'category' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|string',
+            'borrowed_at' => 'nullable|date',
+            'returned_at' => 'nullable|date',
         ]);
+
+        $car = Car::findOrFail($id);
+
+        $car->title = $validated['title'];
+        $car->description = $validated['description'];
+        $car->category = $validated['category'];
+        $car->status = $validated['status'];
+        
+        $car->borrowed_at = $validated['borrowed_at'] ? \Carbon\Carbon::parse($validated['borrowed_at'])->format('Y-m-d') : null;
+        $car->returned_at = $validated['returned_at'] ? \Carbon\Carbon::parse($validated['returned_at'])->format('Y-m-d') : null;
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('cars', 'public');

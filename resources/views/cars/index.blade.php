@@ -16,6 +16,9 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Category</th>
+                <th>Status</th>
+                <th>Borrowed At</th>
+                <th>Returned At</th>
                 <th>Image</th>
                 <th>Actions</th>
             </tr>
@@ -27,6 +30,9 @@
                     <td>{{ $car->title }}</td>
                     <td>{{ $car->description }}</td>
                     <td>{{ $car->category }}</td>
+                    <td>{{ $car->status }}</td>
+                    <td>{{ $car->borrowed_at }}</td>
+                    <td>{{ $car->returned_at }}</td>
                     <td>
                         @if($car->image)
                             <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->title }}" width="100">

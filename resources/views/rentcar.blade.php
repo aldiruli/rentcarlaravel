@@ -201,6 +201,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $car->title }}</h5>
                             <p class="card-text">{{ $car->description }}</p>
+                            <p class="card-text">{{ $car->status }}</p>
                             <a href="https://wa.me/1234567890" class="btn btn-primary">
                                 <i class="fab fa-whatsapp"></i> Rent Now
                             </a>
