@@ -76,8 +76,14 @@
             <img src="assets/img/template/toyota-alphard-rental-mobil-surabaya.png" class="img-fluid" alt="rental-mobil-surabaya">
         </div>
         <div class="col-md-6">
-            <p class="lead">Welcome to Your Rent Car, We are the leading car rental company in Surabaya. a place where your journey is not just about getting to your destination, but also becomes an extraordinary, unforgettable adventure.</p>
-            <p class="lead">With a commitment to providing an unrivaled driving experience, we understand that a journey is more than just a route from A to B. That's why we're here to give you more than just a car – we take you on a journey full of wonderful memories and unmatched freedom .</p>  
+            @if($abouts->isEmpty())
+                <p class="lead">No about content available.</p>
+            @else
+                @foreach ($abouts as $about)
+                    <p class="lead">{{ $about->description }}</p>
+                @endforeach
+            @endif
+            {{-- <p>{{ dd($abouts) }}</p> --}}
         </div>
     </div>
     </div>

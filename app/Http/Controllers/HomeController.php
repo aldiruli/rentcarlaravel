@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Home;
 use App\Models\Car;
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,7 +20,8 @@ class HomeController extends Controller
     {
         $homes = Home::all();
         $cars = Car::all(); 
-        return view('rentcar', compact('homes', 'cars'));
+        $abouts = About::all(); 
+        return view('rentcar', compact('homes', 'cars', 'abouts'));
     }
 
     public function create()
