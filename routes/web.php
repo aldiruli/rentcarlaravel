@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,10 +58,14 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{car}', [CarController::class, 'destroy'])->name('destroy'); // Hapus mobil
     });
     
-    
-    
-    
-    
+    Route::prefix('about')->name('about.')->group(function () {
+        Route::get('/', [AboutController::class, 'index'])->name('index'); // List semua about
+        Route::get('/create', [AboutController::class, 'create'])->name('create'); // Form tambah about
+        Route::post('/store', [AboutController::class, 'store'])->name('store'); // Proses tambah about
+        Route::get('/{about}/edit', [AboutController::class, 'edit'])->name('edit'); // Form edit about
+        Route::put('/{about}', [AboutController::class, 'update'])->name('update'); // Proses edit about
+        Route::delete('/{about}', [AboutController::class, 'destroy'])->name('destroy'); // Hapus about
+    });
 });
 
 require __DIR__.'/auth.php';
