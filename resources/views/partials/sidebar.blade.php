@@ -15,6 +15,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('about.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>About Us</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('cars.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-car"></i>
                         <p>Car</p>
