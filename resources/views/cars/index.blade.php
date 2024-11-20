@@ -15,6 +15,7 @@
                 <th>No</th>
                 <th>Title</th>
                 <th>Description</th>
+                <th>Category</th>
                 <th>Image</th>
                 <th>Actions</th>
             </tr>
@@ -25,6 +26,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $car->title }}</td>
                     <td>{{ $car->description }}</td>
+                    <td>{{ $car->category }}</td>
                     <td>
                         @if($car->image)
                             <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->title }}" width="100">
