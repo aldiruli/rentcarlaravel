@@ -73,5 +73,17 @@ class CarController extends Controller
         $car->delete();
         return redirect()->route('cars.index')->with('success', 'Car deleted successfully.');
     }
+
+    public function filterByCategory($category)
+    {
+        if ($category === 'all') {
+            $cars = Car::all();
+        } else {
+            $cars = Car::where('category', $category)->get();
+        }
+
+        return response()->json($cars);
+    }
+
 }
 

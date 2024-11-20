@@ -88,10 +88,10 @@
     <div class="container">
         <h2 class="text-center mb-4">Our Car List</h2>
         <div class="row">
-            <div  class="text-center col-md-12">
-                <button type="button" id="showAll" class="btn btn-primary">All</button>
-                <button type="button" id="showSUV" class="btn btn-primary">SUV</button>
-                <button type="button" id="showMiniBus" class="btn btn-primary">Mini bus</button>
+            <div class="text-center col-md-12">
+                <button type="button" id="showAll" class="btn btn-primary" onclick="filterCategory('all')">All</button>
+                <button type="button" id="showSUV" class="btn btn-primary" onclick="filterCategory('SUV')">SUV</button>
+                <button type="button" id="showMiniBus" class="btn btn-primary" onclick="filterCategory('Minibus')">Mini bus</button>
             </div>
         </div>
         <br>
@@ -187,7 +187,7 @@
         </div> --}}
         <div class="row">
             @forelse ($cars as $car)
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 {{ strtolower($car->category) }}">
                     <div class="card text-center">
                         <img src="{{ $car->image ? asset('storage/' . $car->image) : 'assets/img/default-image.png' }}" 
                              class="card-img-top" 
@@ -345,5 +345,52 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- custom js -->
 <script src="assets/src/style.js"></script>
+{{-- filter kategori mobil --}}
+<script>
+    function filterCategory(category) {
+        // AJAX request
+        fetch(`/rentcar/filter/${category}`)
+            .then(response => response.json())
+            .then(data => {
+                // Clear the container
+                const container = document.getElementById('carContainer');
+                container.innerHTML = '';
+
+                // Check if there are any cars
+                if (data.length > 0) {
+                    // Loop through the cars and create cards
+                    data.forEach(car => {
+                        const card = `
+                            <div class="col-md-4 mb-4">
+                                <div class="card text-center">
+                                    <img src="${car.image ? '/storage/' + car.image : 'assets/img/default-image.png'}" 
+                                         class="card-img-top" 
+                                         alt="${car.title}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${car.title}</h5>
+                                        <p class="card-text">${car.description}</p>
+                                        <a href="https://wa.me/1234567890" class="btn btn-primary">
+                                            <i class="fab fa-whatsapp"></i> Rent Now
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        container.insertAdjacentHTML('beforeend', card);
+                    });
+                } else {
+                    // Show a message if no cars are available
+                    container.innerHTML = `
+                        <div class="col-12">
+                            <div class="alert alert-warning text-center">
+                                No cars available for this category.
+                            </div>
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
 </body>
 </html>

@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'rentcar']);
 Route::get('/rentcar', [CarController::class, 'rentcar'])->name('rentcar');
+Route::get('/rentcar/filter/{category}', [CarController::class, 'filterByCategory'])->name('rentcar.filter');
 
 Route::get('/login', function () {
     return view('auth/login');
