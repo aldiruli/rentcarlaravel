@@ -30,6 +30,7 @@ class CarController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required',
+            'category' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -51,6 +52,7 @@ class CarController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required',
+            'category' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 

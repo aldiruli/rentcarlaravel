@@ -16,6 +16,14 @@
             <textarea name="description" id="description" class="form-control" required></textarea>
         </div>
         <div class="form-group">
+            <label for="category">Category</label>
+            <select name="category" id="category" class="form-control" required>
+                <option value="">-- Select Category --</option>
+                <option value="SUV">SUV</option>
+                <option value="Minibus">Minibus</option>
+            </select>
+        </div>               
+        <div class="form-group">
             <label for="image">Image</label>
             <input type="file" name="image" id="image" class="form-control">
         </div>
