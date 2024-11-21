@@ -45,9 +45,10 @@ class CarController extends Controller
         return redirect()->route('cars.index')->with('success', 'Car created successfully.');
     }
 
-    public function edit(Car $car)
+    public function edit($id)
     {
-        return view('cars.edit', compact('car'));
+        $car = Car::findOrFail($id); 
+        return view('cars.edit', compact('car', 'id')); 
     }
 
     public function update(Request $request, Car $car)
@@ -62,15 +63,13 @@ class CarController extends Controller
             'returned_at' => 'nullable|date',
         ]);
 
-        $car = Car::findOrFail($id);
-
         $car->title = $validated['title'];
         $car->description = $validated['description'];
         $car->category = $validated['category'];
         $car->status = $validated['status'];
         
         $car->borrowed_at = $validated['borrowed_at'] ? \Carbon\Carbon::parse($validated['borrowed_at'])->format('Y-m-d') : null;
-        $car->returned_at = $validated['returned_at'] ? \Carbon\Carbon::parse($validated['returned_at'])->format('Y-m-d') : null;
+        $car->returned_at = $validated['returned_at'] ? \Carbon\Carbon::parse($validated['returned_at'])->format('d-m-Y') : null;
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('cars', 'public');

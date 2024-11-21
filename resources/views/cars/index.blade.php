@@ -31,8 +31,8 @@
                     <td>{{ $car->description }}</td>
                     <td>{{ $car->category }}</td>
                     <td>{{ $car->status }}</td>
-                    <td>{{ $car->borrowed_at }}</td>
-                    <td>{{ $car->returned_at }}</td>
+                    <td>{{ $car->borrowed_at ? \Carbon\Carbon::parse($car->borrowed_at)->format('d-m-Y') : '-' }}</td>
+                    <td>{{ $car->returned_at ? \Carbon\Carbon::parse($car->returned_at)->format('d-m-Y') : '-' }}</td>
                     <td>
                         @if($car->image)
                             <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->title }}" width="100">
