@@ -33,22 +33,44 @@
         </div>
         <div class="form-group">
             <label for="status">Status</label>
-            <select class="form-control" id="status" name="status">
+            <select class="form-control" id="status" name="status" onchange="toggleDateFields()">
                 <option value="available" {{ old('status', $car->status) == 'available' ? 'selected' : '' }}>Available</option>
                 <option value="rented" {{ old('status', $car->status) == 'rented' ? 'selected' : '' }}>Rented</option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="borrowed_at_group" style="display: none;">
             <label for="borrowed_at">Tanggal Pinjam</label>
             <input type="date" class="form-control" id="borrowed_at" name="borrowed_at" 
             value="{{ old('borrowed_at', $car->borrowed_at) }}">
         </div>
-        <div class="form-group">
+        <div class="form-group" id="returned_at_group" style="display: none;">
             <label for="returned_at">Tanggal Kembali</label>
             <input type="date" class="form-control" id="returned_at" name="returned_at" 
-             value="{{ old('returned_at', $car->returned_at) }}">
+            value="{{ old('returned_at', $car->returned_at) }}">
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
 @endsection
+
+<script>
+    function toggleDateFields() {
+        const status = document.getElementById('status').value;
+        const borrowedAtGroup = document.getElementById('borrowed_at_group');
+        const returnedAtGroup = document.getElementById('returned_at_group');
+        
+        if (status === 'rented') {
+            borrowedAtGroup.style.display = 'block';
+            returnedAtGroup.style.display = 'block';
+        } else {
+            borrowedAtGroup.style.display = 'none';
+            returnedAtGroup.style.display = 'none';
+            document.getElementById('borrowed_at').value = '';
+            document.getElementById('returned_at').value = '';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        toggleDateFields();
+    });
+</script>
