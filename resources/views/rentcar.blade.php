@@ -202,6 +202,12 @@
                             <h5 class="card-title">{{ $car->title }}</h5>
                             <p class="card-text">{{ $car->description }}</p>
                             <p class="card-text">{{ $car->status }}</p>
+                            @if ($car->status === 'rented')
+                                <p class="text-warning">
+                                    Ready on: 
+                                    {{ $car->returned_at ? \Carbon\Carbon::parse($car->returned_at)->addDay()->format('d-m-Y') : 'TBA' }}
+                                </p>
+                            @endif
                             <a href="https://wa.me/1234567890" class="btn btn-primary">
                                 <i class="fab fa-whatsapp"></i> Rent Now
                             </a>
