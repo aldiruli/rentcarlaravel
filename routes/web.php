@@ -29,10 +29,6 @@ Route::get('/login', function () {
     return view('auth/login');
 });
 
-// Route::get('/register', function () {
-//     return view('auth/register');
-// });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -50,21 +46,21 @@ Route::middleware('auth')->group(function () {
         Route::delete('{home}', [HomeController::class, 'destroy'])->name('destroy'); 
     });
     Route::prefix('cars')->name('cars.')->group(function () {
-        Route::get('/', [CarController::class, 'index'])->name('index'); // List semua mobil
-        Route::get('/create', [CarController::class, 'create'])->name('create'); // Form tambah mobil
-        Route::post('/store', [CarController::class, 'store'])->name('store'); // Proses tambah mobil
-        Route::get('/{car}/edit', [CarController::class, 'edit'])->name('edit'); // Form edit mobil
-        Route::put('/{car}', [CarController::class, 'update'])->name('update'); // Proses edit mobil
-        Route::delete('/{car}', [CarController::class, 'destroy'])->name('destroy'); // Hapus mobil
+        Route::get('/', [CarController::class, 'index'])->name('index'); 
+        Route::get('/create', [CarController::class, 'create'])->name('create'); 
+        Route::post('/store', [CarController::class, 'store'])->name('store');
+        Route::get('/{car}/edit', [CarController::class, 'edit'])->name('edit'); 
+        Route::put('/{car}', [CarController::class, 'update'])->name('update'); 
+        Route::delete('/{car}', [CarController::class, 'destroy'])->name('destroy'); 
     });
     
     Route::prefix('about')->name('about.')->group(function () {
-        Route::get('/', [AboutController::class, 'index'])->name('index'); // List semua about
-        Route::get('/create', [AboutController::class, 'create'])->name('create'); // Form tambah about
-        Route::post('/store', [AboutController::class, 'store'])->name('store'); // Proses tambah about
-        Route::get('/{about}/edit', [AboutController::class, 'edit'])->name('edit'); // Form edit about
-        Route::put('/{about}', [AboutController::class, 'update'])->name('update'); // Proses edit about
-        Route::delete('/{about}', [AboutController::class, 'destroy'])->name('destroy'); // Hapus about
+        Route::get('/', [AboutController::class, 'index'])->name('index'); 
+        Route::get('/create', [AboutController::class, 'create'])->name('create'); 
+        Route::post('/store', [AboutController::class, 'store'])->name('store'); 
+        Route::get('/{about}/edit', [AboutController::class, 'edit'])->name('edit');
+        Route::put('/{about}', [AboutController::class, 'update'])->name('update'); 
+        Route::delete('/{about}', [AboutController::class, 'destroy'])->name('destroy'); 
     });
 });
 
