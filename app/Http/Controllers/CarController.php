@@ -14,12 +14,6 @@ class CarController extends Controller
         return view('cars.index', compact('cars'));
     }
 
-    // public function rentcar()
-    // {
-    //     $cars = Car::all(); 
-    //     return view('rentcar', compact('cars'));
-    // }
-
     public function create()
     {
         return view('cars.create');
@@ -38,7 +32,14 @@ class CarController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('cars', 'public');
+            $originalName = pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            
+            $filename = $originalName . '-rentcar.' . $extension;
+    
+            $path = $request->file('image')->storeAs('public/images', $filename);
+    
+            $validated['image'] = str_replace('public/', '', $path);
         }
 
         Car::create($validated);
@@ -72,7 +73,16 @@ class CarController extends Controller
         $car->returned_at = $validated['returned_at'] ? \Carbon\Carbon::parse($validated['returned_at'])->format('d-m-Y') : null;
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('cars', 'public');
+            $originalName = pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $filename = $originalName . '-rentcar.' . $extension;
+        
+            $path = $request->file('image')->storeAs('public/images', $filename);
+            $validated['image'] = str_replace('public/', '', $path);
+        
+            if ($car->image) {
+                Storage::delete('public/' . $car->image);
+            }
         }
 
         $car->update($validated);
