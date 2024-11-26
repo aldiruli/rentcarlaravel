@@ -88,8 +88,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $car->title }}</h5>
                             <p class="card-text">{{ $car->description }}</p>
-                            <p class="card-text">{{ $car->status }}</p>
-                            @if ($car->status === 'rented')
+                            <p class="card-text">{{ $car->current_status }}</p>
+                            @if ($car->current_status === 'rented')
                                 <p class="text-warning">
                                     Ready on: 
                                     {{ $car->returned_at ? \Carbon\Carbon::parse($car->returned_at)->addDay()->format('d-m-Y') : 'TBA' }}

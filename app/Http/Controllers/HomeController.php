@@ -19,7 +19,23 @@ class HomeController extends Controller
     public function rentcar()
     {
         $homes = Home::all();
-        $cars = Car::all(); 
+        $today = now()->format('Y-m-d');
+
+        $cars = Car::all()->map(function ($car) use ($today) {
+            
+            
+            if (
+                $car->status === 'rented' &&
+                $car->borrowed_at <= $today &&
+                $car->returned_at >= $today
+            ) {
+                $car->current_status = 'rented';
+            } else {
+                $car->current_status = 'available';
+            }
+
+            return $car;
+        });
         $abouts = About::all(); 
         return view('rentcar', compact('homes', 'cars', 'abouts'));
     }
