@@ -33,10 +33,10 @@
                     <a class="nav-link" data-section="#home" onclick="scrollToSection('#home')">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-section="#about" onclick="scrollToSection('#about')">About Us</a>
+                    <a class="nav-link" data-section="#about" onclick="scrollToSection('#about')">Our Cars</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-section="#cars" onclick="scrollToSection('#cars')">Our Cars</a>
+                    <a class="nav-link" data-section="#cars" onclick="scrollToSection('#cars')">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-section="#services" onclick="scrollToSection('#services')">Our Service</a>
@@ -54,43 +54,19 @@
 <div class="jumbotron" id="home">
     <div class="jumbotron-bg animate__animated animate__fadeInRight animate__slow">
         <!-- <div class="img-attrib">publicdomainq.net</div> -->
-    </div> <!-- Bagian latar belakang -->
+    </div> 
     <div class="jumbotron-content">
         @forelse ($homes as $home)
             <h1 class="best_text">{{ $home->title }}</h1>
             <p class="many_text">{{ $home->body }}</p>
         @empty
-            {{-- <h1 class="best_text">We Are<br>Best Guide<br>For Your Transportation</h1>
-            <p class="many_text">There are Many Choices & Variations</p> --}}
         @endforelse
-        <div class="read_bt"><a onclick="scrollToSection('#about')">About Us</a></div>
+        <div class="read_bt"><a onclick="scrollToSection('#about')">Our Cars</a></div>
     </div>
 </div>
 
 <!-- about us -->
 <div id="about">
-    <div class="container">
-        <h2 class="text-center mb-12">Your Rent Car</h2>
-    <div class="row">
-        <div class="col-md-6 about-zatrans">
-            <img src="assets/img/template/toyota-alphard-rental-mobil-surabaya.png" class="img-fluid" alt="rental-mobil-surabaya">
-        </div>
-        <div class="col-md-6">
-            @if($abouts->isEmpty())
-                <p class="lead">No about content available.</p>
-            @else
-                @foreach ($abouts as $about)
-                    <p class="lead">{{ $about->description }}</p>
-                @endforeach
-            @endif
-            {{-- <p>{{ dd($abouts) }}</p> --}}
-        </div>
-    </div>
-    </div>
-</div>
-
-<!-- Car List -->
-<div id="cars">
     <div class="container">
         <h2 class="text-center mb-4">Our Car List</h2>
         <div class="row">
@@ -101,96 +77,7 @@
             </div>
         </div>
         <br>
-        {{-- <div class="row">
-            <!-- cars card -->
-            <div class="col-md-4 mb-4 minibus">
-                <div class="card text-center">
-                    <img src="assets/img/alphard-rental-mobil-sby.png" class="card-img-top" alt="rental-mobil-surabaya-alphard">
-                    <div class="card-body">
-                        <h5 class="card-title">Alpha</h5>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam maxime quo quod, in repellendus, eligendi quia voluptatem voluptas necessitatibus dolor quibusdam! Ducimus nam ipsam totam perspiciatis, soluta porro vel! </p>
-                        <a href="#" class="btn btn-primary"><i class="fab fa-whatsapp"></i></li> rent now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4 suv">
-                <div class="card text-center">
-                    <img src="assets/img/fortuner-rental-mobil-sby.png" class="card-img-top" alt="rental-mobil-surabaya-Fortuner">
-                    <div class="card-body">
-                        <h5 class="card-title">Fortune</h5>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam maxime quo quod, in repellendus, eligendi quia voluptatem voluptas necessitatibus dolor quibusdam! Ducimus nam ipsam totam perspiciatis, soluta porro vel! </p>
-                        <a href="#" class="btn btn-primary"><i class="fab fa-whatsapp"></i></li> rent now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card text-center">
-                    <img src="assets/img/inova-rental-mobil-sby.png" class="card-img-top" alt="rental-mobil-surabaya-innova-reborn">
-                    <div class="card-body">
-                        <h5 class="card-title">Innovation</h5>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam maxime quo quod, in repellendus, eligendi quia voluptatem voluptas necessitatibus dolor quibusdam! Ducimus nam ipsam totam perspiciatis, soluta porro vel! </p>
-                        <a href="#" class="btn btn-primary"><i class="fab fa-whatsapp"></i></li> rent now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card text-center">
-                    <img src="assets/img/xenia-rental-mobil-sby.png" class="card-img-top" alt="rental-mobil-surabaya-xenia">
-                    <div class="card-body">
-                        <h5 class="card-title">Xena</h5>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam maxime quo quod, in repellendus, eligendi quia voluptatem voluptas necessitatibus dolor quibusdam! Ducimus nam ipsam totam perspiciatis, soluta porro vel! </p>
-                        <a href="#" class="btn btn-primary"><i class="fab fa-whatsapp"></i></li> rent now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card text-center">
-                    <img src="assets/img/xpander-rental-mobil-sby.png" class="card-img-top" alt="rental-mobil-surabaya-xpander">
-                    <div class="card-body">
-                        <h5 class="card-title">Spander</h5>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam maxime quo quod, in repellendus, eligendi quia voluptatem voluptas necessitatibus dolor quibusdam! Ducimus nam ipsam totam perspiciatis, soluta porro vel! </p>
-                        <a href="#" class="btn btn-primary"><i class="fab fa-whatsapp"></i></li> rent now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card text-center">
-                    <img src="assets/img/avanza-rental-mobil-sby.png" class="card-img-top" alt="rental-mobil-surabaya-avanza">
-                    <div class="card-body">
-                        <h5 class="card-title">Avan</h5>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam maxime quo quod, in repellendus, eligendi quia voluptatem voluptas necessitatibus dolor quibusdam! Ducimus nam ipsam totam perspiciatis, soluta porro vel! </p>
-                        <a href="#" class="btn btn-primary"><i class="fab fa-whatsapp"></i></li> rent now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 mb-2">
-                
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card text-center">
-                    <img src="assets/img/hiace-rental-mobil-sby.png" class="card-img-top" alt="rental-mobil-surabaya-hiace-commuter">
-                    <div class="card-body">
-                        <h5 class="card-title">Hi com</h5>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam maxime quo quod, in repellendus, eligendi quia voluptatem voluptas necessitatibus dolor quibusdam! Ducimus nam ipsam totam perspiciatis, soluta porro vel! </p>
-                        <a href="#" class="btn btn-primary"><i class="fab fa-whatsapp"></i></li> rent now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card text-center">
-                    <img src="assets/img/hiace-premio-rental-mobil-sby.png" class="card-img-top" alt="rental-mobil-surabaya-hiace-premio">
-                    <div class="card-body">
-                        <h5 class="card-title">Hi Prem</h5>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam maxime quo quod, in repellendus, eligendi quia voluptatem voluptas necessitatibus dolor quibusdam! Ducimus nam ipsam totam perspiciatis, soluta porro vel! </p>
-                        <a href="#" class="btn btn-primary"><i class="fab fa-whatsapp"></i></li> rent now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 mb-2">
-                
-            </div>
-            <!-- Add another car card here -->
-        </div> --}}
+        
         <div class="row">
             @forelse ($cars as $car)
                 <div class="col-md-4 mb-4 {{ strtolower($car->category) }}">
@@ -222,6 +109,28 @@
                 </div>
             @endforelse
         </div>
+    </div>
+</div>
+
+<!-- Car List -->
+<div id="cars">
+    <div class="container">
+        <h2 class="text-center mb-12">Your Rent Car</h2>
+    <div class="row">
+        <div class="col-md-6 about-zatrans">
+            <img src="assets/img/template/toyota-alphard-rental-mobil-surabaya.png" class="img-fluid" alt="rental-mobil-surabaya">
+        </div>
+        <div class="col-md-6">
+            @if($abouts->isEmpty())
+                <p class="lead">No about content available.</p>
+            @else
+                @foreach ($abouts as $about)
+                    <p class="lead">{{ $about->description }}</p>
+                @endforeach
+            @endif
+            {{-- <p>{{ dd($abouts) }}</p> --}}
+        </div>
+    </div>
     </div>
 </div>
 
@@ -299,21 +208,6 @@
         <h2 class="text-center mb-4">Contact</h2>
         <div class="row">
             <div class="col-md-6 mx-auto">
-                {{-- <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message <i class="fa fa-paper-plane"></i> </button>
-                </form> --}}
                 
                 <ul>
                     <li>
