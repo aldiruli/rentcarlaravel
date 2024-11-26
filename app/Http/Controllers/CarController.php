@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\RentalHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -83,6 +84,14 @@ class CarController extends Controller
             if ($car->image) {
                 Storage::delete('public/' . $car->image);
             }
+        }
+
+        if ($car->status === 'rented' && $validated['status'] === 'available') {
+            RentalHistory::create([
+                'car_id' => $car->id,
+                'borrowed_at' => $car->borrowed_at,
+                'returned_at' => $car->returned_at,
+            ]);
         }
 
         $car->update($validated);

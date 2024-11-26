@@ -18,4 +18,9 @@ class Car extends Model
         'borrowed_at',   
         'returned_at',
     ];
+
+    public function rentalHistories()
+    {
+        return $this->hasMany(RentalHistory::class);
+    }
 }

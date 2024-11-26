@@ -28,7 +28,7 @@
     <script>
         const ctx = document.getElementById('rentChart').getContext('2d');
         const rentChart = new Chart(ctx, {
-            type: 'bar', // Bisa 'line', 'pie', dll.
+            type: 'bar', 
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [{

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\RentalHistory;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $rentData = Car::selectRaw('MONTH(borrowed_at) as month, COUNT(*) as total')
-            ->where('status', 'rented')
+        $rentData = RentalHistory::selectRaw('MONTH(borrowed_at) as month, COUNT(*) as total')
             ->whereYear('borrowed_at', date('Y')) 
             ->groupBy('month')
             ->orderBy('month')
