@@ -50,6 +50,10 @@
     </div>
 </nav>
 
+<a href="https://wa.me/1234567890" target="_blank" class="whatsapp-button">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
 <!-- jumbotron -->
 <div class="jumbotron" id="home">
     <div class="jumbotron-bg animate__animated animate__fadeInRight animate__slow">
