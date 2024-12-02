@@ -43,6 +43,11 @@ class CarController extends Controller
             $validated['image'] = str_replace('public/', '', $path);
         }
 
+        if ($request->status == 'rented') {
+            $validated['borrowed_at'] = $request->borrowed_at;
+            $validated['returned_at'] = null;  
+        }
+
         Car::create($validated);
         return redirect()->route('cars.index')->with('success', 'Car created successfully.');
     }
@@ -61,7 +66,7 @@ class CarController extends Controller
             'category' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'status' => 'required|string',
-            'borrowed_at' => 'nullable|date',
+            'borrowed_at' => $request->status === 'rented' ? 'required|date' : 'nullable|date',
             'returned_at' => 'nullable|date',
         ]);
 
@@ -69,9 +74,9 @@ class CarController extends Controller
         $car->description = $validated['description'];
         $car->category = $validated['category'];
         $car->status = $validated['status'];
-        
+
         $car->borrowed_at = $validated['borrowed_at'] ? \Carbon\Carbon::parse($validated['borrowed_at'])->format('Y-m-d') : null;
-        $car->returned_at = $validated['returned_at'] ? \Carbon\Carbon::parse($validated['returned_at'])->format('d-m-Y') : null;
+        $car->returned_at = $validated['returned_at'] ? \Carbon\Carbon::parse($validated['returned_at'])->format('Y-m-d') : null;
 
         if ($request->hasFile('image')) {
             $originalName = pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME);
@@ -86,16 +91,16 @@ class CarController extends Controller
             }
         }
 
-        if ($car->status === 'rented' && $validated['status'] === 'available') {
+        $car->update($validated);
+        if ($request->status == 'rented') {
             RentalHistory::create([
                 'car_id' => $car->id,
-                'borrowed_at' => $car->borrowed_at,
-                'returned_at' => $car->returned_at,
+                'borrowed_at' => $request->borrowed_at,
+                'returned_at' => $request->returned_at,
             ]);
-        }
-
-        $car->update($validated);
-        return redirect()->route('cars.index')->with('success', 'Car updated successfully.');
+        }     
+    
+    return redirect()->route('cars.index')->with('success', 'Car updated successfully.');
     }
 
     public function destroy(Car $car)
