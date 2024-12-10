@@ -1,2 +1,8 @@
 @import 'admin-lte/dist/css/adminlte.min.css';
 
+.d-none {
+    display: none !important;
+}
+.d-block {
+    display: block !important;
+}

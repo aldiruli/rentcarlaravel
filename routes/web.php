@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CarController;
@@ -28,6 +29,15 @@ Route::get('/rentcar/filter/{category}', [CarController::class, 'filterByCategor
 
 Route::get('/login', function () {
     return view('auth/login');
+});
+
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index'); 
+    Route::get('/create', [UserController::class, 'create'])->name('create'); 
+    Route::post('/store', [UserController::class, 'store'])->name('store'); 
+    Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::put('/{user}', [UserController::class, 'update'])->name('update'); 
+    Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy'); 
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
