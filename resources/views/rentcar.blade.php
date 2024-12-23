@@ -56,7 +56,7 @@
 
 <!-- jumbotron -->
 <div class="jumbotron" id="home">
-    <div class="jumbotron-bg animate__animated animate__fadeInRight animate__slow">
+    <div class="jumbotron-bg animate__animated" data-animate-in="animate__fadeInRight">
         <!-- <div class="img-attrib">publicdomainq.net</div> -->
     </div> 
     <div class="jumbotron-content">
@@ -121,12 +121,12 @@
 <!-- Car List -->
 <div id="cars">
     <div class="container">
-        <h2 class="text-center mb-12">Your Rent Car</h2>
+        <h2 class="text-center mb-12 animate__animated" data-animate-in="animate__fadeInUp">Your Rent Car</h2>
     <div class="row">
         <div class="col-md-6 about-zatrans">
             <img src="assets/img/template/toyota-alphard-rental-mobil-surabaya.png" class="img-fluid" alt="rental-mobil-surabaya">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 animate__animated" data-animate-in="animate__fadeInRight">
             @if($abouts->isEmpty())
                 <p class="lead">No about content available.</p>
             @else
@@ -142,7 +142,7 @@
 
 <!-- Our Services -->
 <div id="services">
-    <h2 class="text-center mb-12">Our Services</h2>
+    <h2 class="text-center mb-12 animate__animated" data-animate-in="animate__fadeInUp">Our Services</h2>
     <div class="container">
         <div class="row">
             <div class="col-md-3">

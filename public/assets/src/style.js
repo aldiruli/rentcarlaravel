@@ -1,26 +1,22 @@
         $(document).ready(function () {
-            // Function to toggle classes based on scroll position
             function updateNavbar() {
-                if ($(window).scrollTop() > 50) { // Change the value as needed
+                if ($(window).scrollTop() > 50) { 
                     $('.navbar').addClass('scroll').removeClass('hover');
-                    $('.navbar').css('z-index', '100'); // Change the z-index value
+                    $('.navbar').css('z-index', '100'); 
                 } else {
                     $('.navbar').removeClass('scroll hover');
-                    $('.navbar').css('z-index', '-1'); // Reset the z-index value
+                    $('.navbar').css('z-index', '-1');
                 }
             }
 
-            // Toggle classes on initial page load
             updateNavbar();
 
-            // Toggle classes on scroll
             $(window).scroll(function () {
                 updateNavbar();
             });
         });
             
         $(document).ready(function () {
-            // Function to toggle classes based on scroll position
             function updateNavbar() {
                 const sectionsToAnimate = ['#home', '#about', '#cars', '#services', '#contact'];
 
@@ -34,7 +30,6 @@
                         const navbarTop = $('.navbar').offset().top;
 
                         if (navbarTop >= sectionTop && navbarTop <= sectionBottom) {
-                            // Navbar is touching or above this section
                             $navbarLink.addClass('active');
                         } else {
                             $navbarLink.removeClass('active');
@@ -43,41 +38,32 @@
                 });
             }
 
-            // Toggle classes on initial page load
             updateNavbar();
 
-            // Toggle classes on scroll
             $(window).scroll(function () {
                 updateNavbar();
             });
         });
             
-        // Fungsi untuk menangani klik di navbar
         function scrollToSection(sectionId) {
-            // Mengambil elemen yang sesuai dengan sectionId
             const section = document.querySelector(sectionId);
 
             if (section) {
-                // Menggulir ke elemen tersebut
                 section.scrollIntoView({ behavior: 'smooth' });
 
-                // Menghapus kelas 'active' dari semua elemen navbar
                 const navbarLinks = document.querySelectorAll('.nav-link');
                 navbarLinks.forEach((link) => {
                     link.classList.remove('active');
                 });
 
-                // Menambahkan kelas 'active' ke elemen navbar yang sesuai
                 const activeLink = document.querySelector(`[data-section="${sectionId}"]`);
                 activeLink.classList.add('active');
             }
         }
 
-        // Menangani klik di setiap elemen navbar
         const navbarLinks = document.querySelectorAll('.nav-link');
         navbarLinks.forEach((link) => {
             link.addEventListener('click', function () {
-                // Mendapatkan sectionId dari atribut data-section
                 const sectionId = link.getAttribute('data-section');
                 scrollToSection(sectionId);
             });
@@ -124,9 +110,34 @@
                     card.style.display = "block";
                 });
         
-                // Tandai tombol yang aktif
                 const activeButton = document.getElementById("show" + category.toUpperCase());
                 activeButton.classList.add(".active");
             }
         }
                
+        document.addEventListener("DOMContentLoaded", () => {
+            const animatedElements = document.querySelectorAll('.animate__animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                const inAnimation = entry.target.getAttribute('data-animate-in'); 
+                const outAnimation = entry.target.getAttribute('data-animate-out'); 
+                
+                if (entry.isIntersecting) {
+                  entry.target.classList.add(inAnimation); 
+                  if (outAnimation) {
+                    entry.target.classList.remove(outAnimation);
+                  }
+                } else {
+                  if (outAnimation) {
+                    entry.target.classList.add(outAnimation);
+                  }
+                  entry.target.classList.remove(inAnimation);
+                }
+              });
+            });
+          
+            animatedElements.forEach(el => {
+              observer.observe(el);
+            });
+          });
