@@ -31,21 +31,16 @@ Route::get('/login', function () {
     return view('auth/login');
 });
 
-Route::prefix('users')->name('users.')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('index'); 
-    Route::get('/create', [UserController::class, 'create'])->name('create'); 
-    Route::post('/store', [UserController::class, 'store'])->name('store'); 
-    Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
-    Route::put('/{user}', [UserController::class, 'update'])->name('update'); 
-    Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy'); 
-});
 
+Route::get('/profile', [ProfileController::class, 'edit'])
+    ->middleware(['auth', 'verified'])
+    ->name('profile.edit');
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::middleware('auth', 'role:admin')->group(function () {
+    
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::prefix('/home')->name('home.')->group(function () {
@@ -72,6 +67,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/{about}/edit', [AboutController::class, 'edit'])->name('edit');
         Route::put('/{about}', [AboutController::class, 'update'])->name('update'); 
         Route::delete('/{about}', [AboutController::class, 'destroy'])->name('destroy'); 
+    });
+
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index'); 
+        Route::get('/create', [UserController::class, 'create'])->name('create'); 
+        Route::post('/store', [UserController::class, 'store'])->name('store'); 
+        Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::put('/{user}', [UserController::class, 'update'])->name('update'); 
+        Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy'); 
     });
 });
 

@@ -43,12 +43,12 @@
                         <p>Drivers</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('users.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>Booking/Orders</p>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
     </div>
