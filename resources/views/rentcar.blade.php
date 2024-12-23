@@ -76,8 +76,10 @@
         <div class="row">
             <div class="text-center col-md-12">
                 <button type="button" id="showAll" class="btn btn-primary" onclick="filterCategory('all')">All</button>
-                <button type="button" id="showSUV" class="btn btn-primary" onclick="filterCategory('SUV')">SUV</button>
-                <button type="button" id="showMiniBus" class="btn btn-primary" onclick="filterCategory('Minibus')">Mini bus</button>
+                <button type="button" id="showCityCar" class="btn btn-primary" onclick="filterCategory('citycar')">City Car</button>
+                <button type="button" id="showAPV" class="btn btn-primary" onclick="filterCategory('apv')">Apv/Mpv</button>
+                <button type="button" id="showMiniBus" class="btn btn-primary" onclick="filterCategory('minibus')">Minibus</button>
+                <button type="button" id="showSedan" class="btn btn-primary" onclick="filterCategory('sedan')">Sedan</button>
             </div>
         </div>
         <br>

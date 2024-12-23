@@ -20,8 +20,10 @@
             <label for="category">Category</label>
             <select name="category" id="category" class="form-control" required>
                 <option value="">-- Select Category --</option>
-                <option value="SUV" {{ $car->category == 'SUV' ? 'selected' : '' }}>SUV</option>
+                <option value="CityCar" {{ $car->category == 'CityCar' ? 'selected' : '' }}>City Car</option>
+                <option value="Apv/Mpv" {{ $car->category == 'Apv/Mpv' ? 'selected' : '' }}>Apv/Mpv</option>
                 <option value="Minibus" {{ $car->category == 'Minibus' ? 'selected' : '' }}>Minibus</option>
+                <option value="Sedan" {{ $car->category == 'Sedan' ? 'selected' : '' }}>Sedan</option>
             </select>
         </div>           
         <div class="form-group">

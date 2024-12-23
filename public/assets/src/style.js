@@ -87,13 +87,21 @@
             showCars("all");
         });
         
-        document.getElementById("showSUV").addEventListener("click", function() {
-            showCars("suv");
+        document.getElementById("showCityCar").addEventListener("click", function() {
+            showCars("citycar");
+        });
+
+        document.getElementById("showAPV").addEventListener("click", function() {
+            showCars("apv");
         });
         
         document.getElementById("showMiniBus").addEventListener("click", function() {
             showCars("minibus");
-        });        
+        });
+        
+        document.getElementById("showSedan").addEventListener("click", function() {
+            showCars("sedan");
+        });
 
         function showCars(category) {
             const allCards = document.querySelectorAll(".col-md-4");

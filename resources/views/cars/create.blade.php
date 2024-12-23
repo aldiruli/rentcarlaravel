@@ -19,8 +19,10 @@
             <label for="category">Category</label>
             <select name="category" id="category" class="form-control" required>
                 <option value="">-- Select Category --</option>
-                <option value="SUV">SUV</option>
+                <option value="CityCar">City Car</option>
+                <option value="Apv/Mpv">Apv/Mpv</option>
                 <option value="Minibus">Minibus</option>
+                <option value="Sedan">Sedan</option>
             </select>
         </div>               
         <div class="form-group">
